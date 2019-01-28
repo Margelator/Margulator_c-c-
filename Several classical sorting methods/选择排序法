@@ -1,0 +1,45 @@
+/*
+  选择排序法是将一组数组内所有的值进行比较选出最大值，关键的是要得到该最大值的数组下标，将其放置数组末尾。
+*/
+#include <iostream>
+using namespace std;
+
+int findMaxPos(int arr[],int n)
+{
+    int max = arr[0];
+    int pos = 0;
+    for(int i=0; i<n; i++)
+    {
+        if(arr[i] > max)
+        {
+            max=arr[i];
+            pos = i;
+        }
+    }
+    return pos;
+}
+
+void selectionSort(int arr[],int n)
+{
+    while(n>1)
+    {
+        int pos = findMaxPos(arr,n);
+        int temp = arr[pos];
+        arr[pos] = arr[n-1];
+        arr[n-1] = temp;
+        n--;
+    }
+}
+
+int main()
+{
+    int arr[]={3,2,5,1,4,6,9,7,8};
+    selectionSort(arr,9);
+    int i;
+    for(i=0; i<9; i++)
+    {
+        cout<<arr[i]<<endl;
+    }
+
+    return 0;
+}
