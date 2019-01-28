@@ -1,3 +1,6 @@
+/*
+  冒泡排序法将两个值进行比较选出最大值，然后将其放在最后，以此类推将剩下的数值进行比较，得出次最大值。
+*/
 #include <iostream>
 using namespace std;
 void bubble(int arr[],int n)
