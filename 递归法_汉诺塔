@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+void move(char sou,char des)
+{
+    cout<<sou<<"--->"<<des<<endl;
+}
+
+void hanoi(int n,char A,char B,char C)
+{
+    if(n == 1) //递归出口
+    {
+        move(A,C);
+    }else
+    {
+        hanoi(n-1,A,C,B); //将n-1个盘子，从A借助C移动到B
+        move(A,C);  //将底层最大的那个盘子移动到C，
+        hanoi(n-1,B,A,C); //再将n-1个盘子从B借助A移动到C
+    }
+}
+
+int main()
+{
+    int n;
+    cout<<"please input one number:"<<endl;
+    cin>>n;
+    hanoi(n,'A','B','C');
+
+    return 0;
+}
