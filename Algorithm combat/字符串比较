@@ -1,0 +1,43 @@
+/*
+  输入两组字符串，比较它们的字母是否相同。
+*/
+#include <iostream>
+#include <cstring>
+#include <string>
+using namespace std;
+
+bool compare(const char* s,const char* t){
+    char* statS[26] = {0};
+    char* statT[26] = {0};
+
+    int s_len = strlen(s); //strlen()函数的功能：输出一组字符串长度
+    int t_len = strlen(t);
+    int index = 0;
+    int i;
+
+    for(i=0; i < s_len; i++){
+        index = s[i] - 'a';
+        statS[index]++; //如果存在某个字母就在该字母上加1
+    }
+
+    for(i=0; i < t_len; i++){
+        index = t[i] - 'a';
+        statT[index]++;
+    }
+
+    for(i; i < 26; i++){
+        if(statS[i] != statT[i]){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main(){
+    const char* s="margelator";
+    const char* t="ortalegram";
+    cout<<compare(s,t)<<endl;
+
+    return 0;
+}
