@@ -15,8 +15,9 @@ node* create_node(int b)
  	{
  		node *num = new node;
  		cin>>num->data;
- 		pre->next = num; //上一个节点指向当前
+ 		pre->next = num; //上一个节点指向当前节点
  		pre = num; //在生成下一个新的节点之前，将当前节点赋给上一个节点
+		pre->next = NULL; //确保最后一个节点的指针域为空
 	}
 	return head->next;
 }
