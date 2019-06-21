@@ -6,41 +6,48 @@ typedef struct ListNode{
     ListNode* next;
 }node;
 
-node* create_node(int b)
+/*创建新节点*/ 
+node* Create_Linked_List(int count)
 {
-	node *head = new node;
- 	node *pre = head; //保存上一个节点
- 	
- 	for(int i=0; i<5; i++)
- 	{
- 		node *num = new node;
- 		cin>>num->data;
- 		pre->next = num; //上一个节点指向当前节点
- 		pre = num; //在生成下一个新的节点之前，将当前节点赋给上一个节点
-		pre->next = NULL; //确保最后一个节点的指针域为空
+	if(count<0)
+	{
+		cerr<<"sorry,please input a positive number"<<endl;
 	}
-	return head->next;
+	node *head = new node;
+ 	node *pre = head;
+ 	
+ 	for(int i=1; i<=count; i++)
+ 	{
+ 		node *p = new node;
+ 		p->data = i;
+ 		pre->next = p; //上一节指针域指向当前节点
+ 		pre = p; //在下一次生成新节点之前，将当前节点赋给上一节点
+ 		p->next = NULL; //确保最后一个节点的指针域为NULL
+	}
+	return head;
 }
 
-void output(int a)
+/*输出节点*/ 
+void output_node(node *output_node_tmp,int output_node_count)
 {
 	node *tmp = new node;
-	tmp = create_node(a);
-	for(int j=0; j<5; j++)
+	tmp = output_node_tmp->next;
+	for(int j=0; j<output_node_count; j++)
 	{
 		cout<<tmp->data<<endl;
 		tmp = tmp->next;
-	}
-	
+	}	
 }
 
-int main(){
-    
-	int m;
-	for(int k=0; k<5; k++)
-	{
-		output(m);
-	}
-	
+
+int main()
+{
+	int num;
+	node *tmp_node = new node;
+	cout<<"Please input Linked list count:";
+	cin>>num;
+	tmp_node = Create_Linked_List(num);
+	output_node(tmp_node,num);
+
     return 0;
 }
