@@ -1,5 +1,5 @@
 /*
-  选择排序法是将一组数组内所有的值进行比较选出最大值，关键的是要得到该最大值的数组下标，将其放置数组末尾。
+第一种方法是将一组数组内所有的值进行比较选出最大值，关键的是要得到该最大值的数组下标，将其放置数组末尾。
 */
 #include <iostream>
 using namespace std;
@@ -42,4 +42,43 @@ int main()
     }
 
     return 0;
+}
+
+
+
+/*
+  第二种方法是将一组数组内所有的值进行比较选出最小值，关键的是要得到该最小值的数组下标，将其放置数组开头。
+*/
+#include <iostream> 
+using namespace std;
+
+void selectionsort(int arr[],int size)
+{
+	for(int i=0; i<size-1; i++) //注意这里 i 的循环次数
+	{	
+		int min_index = i;
+		for(int j = i+1; j<size; j++) //注意这里 j 的循环次数
+		{
+			min_index = arr[min_index] < arr[j] ? min_index : j;
+		}
+		int tmp;
+		tmp = arr[i];
+		arr[i] = arr[min_index];
+		arr[min_index] = tmp;
+	}
+} 
+
+int main()
+{
+	int arr[] = {2,3,1,4,6,5};
+	int size = sizeof(arr) / sizeof(int);
+	
+	selectionsort(arr,size);	
+	
+	for(int i=0; i<size; i++)
+	{
+		cout<<arr[i]<<endl;
+	}
+
+	return 0;
 }
